@@ -1,4 +1,10 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+// We use HashRouter (URLs like /#/app/dashboard) instead of BrowserRouter here
+// because GitHub Pages can't run server-side code — it just serves static
+// files. With BrowserRouter, refreshing a page like /app/dashboard would 404,
+// since there's no server to redirect that URL back to index.html. HashRouter
+// sidesteps the problem entirely: everything after the # is handled by React
+// in the browser, so GitHub Pages only ever needs to serve index.html.
+import { HashRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import { CartProvider } from "./context/CartContext";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -19,7 +25,7 @@ export default function App() {
   return (
     <AuthProvider>
       <CartProvider>
-        <BrowserRouter>
+        <HashRouter>
           <Routes>
             {/* Public */}
             <Route path="/" element={<Landing />} />
@@ -39,7 +45,7 @@ export default function App() {
             {/* Fallback */}
             <Route path="*" element={<Landing />} />
           </Routes>
-        </BrowserRouter>
+        </HashRouter>
       </CartProvider>
     </AuthProvider>
   );
