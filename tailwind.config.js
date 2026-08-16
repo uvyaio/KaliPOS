@@ -52,6 +52,14 @@ export default {
         "surface-container": "#e7eefe",
         outline: "#6e7a70",
         "on-error-container": "#93000a",
+        // New brand palette — dark forest green + white, used for the
+        // landing/login screens and the main app shell (sidebar + dashboard).
+        "brand-ink": "#0c2016",       // darkest green, sidebar/hero background
+        "brand-ink-light": "#173a26", // lighter green for gradients
+        "brand-green": "#1a8f4c",     // primary CTA / active nav / accent green
+        "brand-green-light": "#4ade80", // bright green for highlighted text ("built for Africa")
+        "brand-green-soft": "#e7f5ec", // very light green tint for icon chips on white
+        "app-bg": "#f7f8fa",          // main content area background
       },
       borderRadius: {
         DEFAULT: "0.25rem",

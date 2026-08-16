@@ -20,6 +20,8 @@ import WaitingForMpesaPayment from "./pages/WaitingForMpesaPayment";
 import PaymentSuccessful from "./pages/PaymentSuccessful";
 import MpesaTransactions from "./pages/MpesaTransactions";
 import InventoryDetail from "./pages/InventoryDetail";
+import InventoryList from "./pages/InventoryList";
+import ComingSoon from "./pages/ComingSoon";
 
 export default function App() {
   return (
@@ -40,7 +42,80 @@ export default function App() {
             <Route path="/app/checkout/:orderId/waiting" element={<ProtectedRoute><WaitingForMpesaPayment /></ProtectedRoute>} />
             <Route path="/app/checkout/:orderId/success" element={<ProtectedRoute><PaymentSuccessful /></ProtectedRoute>} />
             <Route path="/app/transactions" element={<ProtectedRoute><MpesaTransactions /></ProtectedRoute>} />
+            <Route path="/app/inventory" element={<ProtectedRoute><InventoryList /></ProtectedRoute>} />
             <Route path="/app/inventory/:itemId" element={<ProtectedRoute><InventoryDetail /></ProtectedRoute>} />
+            <Route
+              path="/app/orders"
+              element={
+                <ProtectedRoute>
+                  <ComingSoon
+                    title="Orders"
+                    icon="receipt_long"
+                    description="A full order history and management view is on the roadmap — for now, check the M-Pesa transactions page for paid orders."
+                  />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/app/reports"
+              element={
+                <ProtectedRoute>
+                  <ComingSoon
+                    title="Reports"
+                    icon="bar_chart"
+                    description="Deeper sales and performance reports are coming soon."
+                  />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/app/ai-assistant"
+              element={
+                <ProtectedRoute>
+                  <ComingSoon
+                    title="AI Assistant"
+                    icon="auto_awesome"
+                    description="Ask questions about your sales, stock, and staff in plain language — coming soon."
+                  />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/app/customers"
+              element={
+                <ProtectedRoute>
+                  <ComingSoon
+                    title="Customers"
+                    icon="group"
+                    description="A customer directory with order history is on the roadmap."
+                  />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/app/staff"
+              element={
+                <ProtectedRoute>
+                  <ComingSoon
+                    title="Staff"
+                    icon="badge"
+                    description="Manage your team's roles and PINs here — coming soon. For now, add staff via the staff-create Edge Function (see the README)."
+                  />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/app/settings"
+              element={
+                <ProtectedRoute>
+                  <ComingSoon
+                    title="Settings"
+                    icon="settings"
+                    description="Restaurant profile, branches, and payment settings are on the roadmap."
+                  />
+                </ProtectedRoute>
+              }
+            />
 
             {/* Fallback */}
             <Route path="*" element={<Landing />} />

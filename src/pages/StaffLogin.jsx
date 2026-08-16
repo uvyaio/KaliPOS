@@ -64,114 +64,98 @@ export default function StaffLogin() {
   };
 
   return (
-    <div className="bg-background font-body-md text-on-surface min-h-screen flex flex-col justify-center items-center">
-      <main className="w-full">
-        <div className="flex flex-col w-full h-full min-h-screen justify-center items-center bg-background relative overflow-hidden">
-          <div className="relative z-10 w-full max-w-6xl mx-auto flex flex-col md:flex-row shadow-2xl rounded-2xl overflow-hidden bg-surface-container-lowest">
-            {/* Left: branding */}
-            <div className="hidden md:flex flex-col w-1/2 relative bg-surface-container p-8 justify-between">
-              <div className="relative z-10">
-                <div className="flex items-center gap-2 text-primary">
-                  <span className="material-symbols-outlined text-[32px]">restaurant_menu</span>
-                  <span className="font-headline-md tracking-tight">
-                    Kali<span className="font-body-md font-light text-on-surface ml-1">POS</span>
-                  </span>
+    <div className="min-h-screen w-full flex flex-col lg:flex-row font-body-md">
+      {/* Left: dark green branding panel, matches Landing */}
+      <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-brand-ink to-brand-ink-light text-white flex-col justify-between px-16 py-16">
+        <Link to="/" className="flex items-center gap-3 w-fit">
+          <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
+            <span className="material-symbols-outlined">storefront</span>
+          </div>
+          <span className="font-headline-md text-headline-md">KaliPOS</span>
+        </Link>
+        <div className="max-w-md">
+          <h1 className="font-display-lg text-[36px] leading-tight font-bold mb-4">Clock in and get selling.</h1>
+          <p className="text-white/70 text-body-lg leading-relaxed">
+            Your phone and PIN get you straight to the POS — no email, no hassle.
+          </p>
+        </div>
+        <p className="text-white/50 text-label-sm">Trusted by 1,200+ shops across Kenya 🇰🇪</p>
+      </div>
+
+      {/* Right: form */}
+      <div className="w-full lg:w-1/2 bg-white flex items-center justify-center px-8 py-16 lg:px-16">
+        <div className="w-full max-w-sm">
+          <Link to="/" className="lg:hidden flex items-center gap-2 text-brand-green mb-10 w-fit">
+            <span className="material-symbols-outlined">storefront</span>
+            <span className="font-headline-md text-headline-md">KaliPOS</span>
+          </Link>
+
+          <h2 className="font-display-lg text-[28px] font-bold text-on-surface mb-1">Staff sign in</h2>
+          <p className="text-on-surface-variant text-body-md mb-8">Enter your work phone and 4-digit PIN</p>
+
+          <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
+            <div>
+              <label className="block font-label-sm text-label-sm text-on-surface mb-2">Phone Number</label>
+              <div className="flex items-center h-14 bg-surface-container-low rounded-xl overflow-hidden focus-within:ring-2 focus-within:ring-brand-green/20 transition-all">
+                <div className="flex items-center gap-2 pl-4 pr-3 border-r border-outline-variant/30 h-full text-on-surface font-medium">
+                  +254
                 </div>
-              </div>
-              <div className="relative z-10 mt-auto pb-12">
-                <p className="font-body-lg text-on-surface-variant max-w-sm">
-                  Access your shift schedule, table assignments, and real-time performance insights.
-                </p>
+                <input
+                  className="w-full h-full bg-transparent border-none focus:outline-none focus:ring-0 px-4 text-body-lg text-on-surface placeholder:text-outline"
+                  placeholder="712 345 678"
+                  value={phone}
+                  onChange={handlePhoneChange}
+                  type="tel"
+                />
               </div>
             </div>
 
-            {/* Right: form */}
-            <div className="w-full md:w-1/2 p-8 md:p-16 flex flex-col justify-center bg-surface-container-lowest relative">
-              <div className="md:hidden flex items-center gap-2 text-primary mb-12">
-                <span className="material-symbols-outlined text-[28px]">restaurant_menu</span>
-                <span className="font-headline-md tracking-tight">
-                  Kali<span className="font-body-md font-light text-on-surface ml-1">POS</span>
-                </span>
+            <div>
+              <div className="flex justify-between items-end mb-2">
+                <label className="block font-label-sm text-label-sm text-on-surface">4-Digit PIN</label>
+                <button type="button" className="text-xs font-label-sm text-brand-green hover:underline">
+                  Forgot PIN?
+                </button>
               </div>
-              <div className="max-w-md w-full mx-auto flex flex-col">
-                <div className="mb-10 text-center md:text-left">
-                  <h1 className="font-headline-lg text-on-surface mb-2 tracking-tight">Staff sign in</h1>
-                  <p className="font-body-md text-on-surface-variant">Enter your work phone and 4-digit PIN</p>
-                </div>
-                <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
-                  <div className="group">
-                    <label className="block font-label-sm text-on-surface mb-2 tracking-wide uppercase text-opacity-80">
-                      Phone Number
-                    </label>
-                    <div className="relative flex items-center h-12 bg-surface-container-lowest rounded-lg border border-outline-variant group-focus-within:border-primary group-focus-within:ring-2 group-focus-within:ring-primary/20 transition-all duration-200 overflow-hidden shadow-sm hover:shadow-md">
-                      <div className="flex items-center gap-2 pl-3 pr-2 border-r border-outline-variant bg-surface-container/30 h-full">
-                        <svg className="rounded-[2px] shadow-[0_0_0_1px_rgba(0,0,0,0.1)]" fill="none" height="16" viewBox="0 0 24 16" width="24" xmlns="http://www.w3.org/2000/svg">
-                          <rect fill="#000000" height="16" width="24"></rect>
-                          <rect fill="#006600" height="5" width="24" y="11"></rect>
-                          <rect fill="#CC0000" height="6" width="24" y="5"></rect>
-                          <rect fill="#FFFFFF" height="1" width="24" y="4"></rect>
-                          <rect fill="#FFFFFF" height="1" width="24" y="11"></rect>
-                        </svg>
-                        <span className="font-body-md text-on-surface font-medium">+254</span>
-                      </div>
-                      <input
-                        className="w-full h-full bg-transparent border-none focus:outline-none focus:ring-0 px-4 font-body-lg text-on-surface placeholder:text-outline"
-                        placeholder="712 345 678"
-                        value={phone}
-                        onChange={handlePhoneChange}
-                        type="tel"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="group">
-                    <div className="flex justify-between items-end mb-2">
-                      <label className="block font-label-sm text-on-surface tracking-wide uppercase text-opacity-80">4-Digit PIN</label>
-                      <button type="button" className="text-xs font-label-sm text-primary hover:text-primary-container transition-colors">
-                        Forgot PIN?
-                      </button>
-                    </div>
-                    <div className="flex gap-4 justify-between">
-                      {pin.map((digit, i) => (
-                        <input
-                          key={i}
-                          ref={pinRefs[i]}
-                          className="pin-input w-14 h-16 text-center text-2xl font-display-lg bg-surface-container-lowest rounded-lg border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all shadow-sm text-on-surface hover:shadow-md"
-                          maxLength={1}
-                          type="password"
-                          inputMode="numeric"
-                          value={digit}
-                          onChange={(e) => handlePinChange(i, e.target.value)}
-                          onKeyDown={(e) => handlePinKeyDown(i, e)}
-                        />
-                      ))}
-                    </div>
-                  </div>
-
-                  {error && <div className="text-error text-label-sm bg-error-container/30 rounded-lg px-4 py-2">{error}</div>}
-
-                  <button
-                    type="submit"
-                    disabled={loading}
-                    className="mt-4 h-12 w-full bg-primary text-on-primary rounded-lg font-label-sm uppercase tracking-wider hover:bg-primary-container active:scale-[0.98] transition-all flex items-center justify-center relative overflow-hidden shadow-md hover:shadow-lg disabled:opacity-60"
-                  >
-                    {loading ? "Signing in..." : "Sign in to Shift"}
-                  </button>
-                </form>
-                <div className="mt-8 pt-6 border-t border-surface-container-highest text-center">
-                  <Link
-                    className="inline-flex items-center gap-2 text-sm font-body-md text-tertiary hover:text-on-surface transition-colors group"
-                    to="/login/owner"
-                  >
-                    <span className="material-symbols-outlined text-[18px]">admin_panel_settings</span>
-                    Owner / Manager? Use email
-                  </Link>
-                </div>
+              <div className="flex gap-4 justify-between">
+                {pin.map((digit, i) => (
+                  <input
+                    key={i}
+                    ref={pinRefs[i]}
+                    className="w-14 h-16 text-center text-2xl font-display-lg bg-surface-container-low rounded-xl border border-transparent focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 transition-all text-on-surface"
+                    maxLength={1}
+                    type="password"
+                    inputMode="numeric"
+                    value={digit}
+                    onChange={(e) => handlePinChange(i, e.target.value)}
+                    onKeyDown={(e) => handlePinKeyDown(i, e)}
+                  />
+                ))}
               </div>
             </div>
+
+            {error && <div className="text-error text-label-sm bg-error-container/30 rounded-lg px-4 py-2">{error}</div>}
+
+            <button
+              type="submit"
+              disabled={loading}
+              className="mt-2 h-14 w-full bg-brand-green text-white rounded-xl font-label-sm text-body-md hover:bg-brand-green/90 active:scale-[0.98] transition-all flex items-center justify-center disabled:opacity-60"
+            >
+              {loading ? "Signing in..." : "Sign in to Shift"}
+            </button>
+          </form>
+
+          <div className="mt-8 pt-6 border-t border-surface-container-high text-center">
+            <Link
+              className="inline-flex items-center gap-2 text-sm text-on-surface-variant hover:text-brand-green transition-colors"
+              to="/login/owner"
+            >
+              <span className="material-symbols-outlined text-[18px]">mail</span>
+              Owner / Manager? Use email
+            </Link>
           </div>
         </div>
-      </main>
+      </div>
     </div>
   );
 }
